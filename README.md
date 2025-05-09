@@ -14,7 +14,16 @@ Features
 Requirements
 
     Python 3.8+
-    Libraries: transformers, langchain-community, faiss-cpu, torch, pandas, numpy, sqlite3, PyPDF2
+    Libraries:
+        transformers
+        langchain
+        langchain-community
+        faiss-cpu
+        torch
+        pandas
+        numpy
+        PyPDF2
+        sentence-transformers
     Optional: CUDA-enabled GPU for faster processing
 
 Installation
@@ -24,11 +33,18 @@ Installation
 
 git clone <repository-url>
 cd <repository-folder>
+Create a virtual environment (optional but recommended):
+bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 Install dependencies:
 bash
+pip install -r requirements.txt
+Or install individually:
+bash
 
-    pip install -r requirements.txt
-    Ensure a sample PDF (sample_knowledge_base.pdf) is available for RAG (or modify the file path).
+    pip install transformers langchain langchain-community faiss-cpu torch pandas numpy PyPDF2 sentence-transformers
+    Ensure a sample PDF (sample_knowledge_base.pdf) is available for RAG or modify the file path in the script.
 
 Usage
 
@@ -44,10 +60,25 @@ Project Structure
     AI_Powered_Chatbot_with_RAG.py: Main script with chatbot logic.
     chatbot_data.db: SQLite database for conversation history.
     sample_knowledge_base.pdf: Sample document for RAG (not included).
+    requirements.txt: List of dependencies.
+    README.md: Project documentation.
+
+Troubleshooting
+
+    ModuleNotFoundError: No module named 'langchain_community': Install the langchain-community package:
+    bash
+
+pip install -U langchain-community
+Missing PDF File: The script expects sample_knowledge_base.pdf. Provide a valid PDF or update the file path in load_documents.
+Indentation Issues: Ensure consistent 4-space indentation. Use a linter like flake8:
+bash
+
+    pip install flake8
+    flake8 AI_Powered_Chatbot_with_RAG.py
 
 Future Improvements
 
-    Integrate advanced frameworks like LangChain or LlamaIndex for enhanced LLM workflows.
+    Integrate advanced frameworks like LlamaIndex or Haystack for enhanced LLM workflows.
     Add Reinforcement Learning for response optimization.
     Support real-time document uploads and multi-user sessions.
 
